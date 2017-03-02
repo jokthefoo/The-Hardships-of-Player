@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
 
+	public bool autoJump = false;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     public float accelerationTimeAirborne = .2f;
@@ -28,17 +29,22 @@ public class Player : MonoBehaviour {
 	
 	void Update () {
 
-        if(controller.collisions.above || controller.collisions.below)
+		if(controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
         }
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && controller.collisions.below)
+		if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && controller.collisions.below && !autoJump)
         {
             velocity.y = jumpVelocity;
         }
+
+		if(controller.collisions.below && autoJump)
+		{
+			velocity.y = jumpVelocity;
+		}
 
         float targetVelocityX = input.x * moveSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, controller.collisions.below?accelerationTimeGrounded:accelerationTimeAirborne);
