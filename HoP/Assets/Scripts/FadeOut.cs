@@ -60,7 +60,7 @@ public class FadeOut : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!touched && !unactive)
+        if(!touched && !unactive && collision.transform.name == "GroundCheck")
         {
             touched = true;
         }

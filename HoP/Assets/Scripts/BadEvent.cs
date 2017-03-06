@@ -1,12 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityStandardAssets._2D;
 using UnityEngine;
 
 public class BadEvent : MonoBehaviour {
 
+    public enum State
+    {
+        shrink, dissapearTime, jumpHeight,clingy
+    }
+
+    public State current;
     public GameObject target;
+    public GameObject player;
     public string badEventText = "You smell really bad today.\n So yellow has been avoiding you.";
+    public float dissapearTime = 1.0f;
+    public bool timedEvent = false;
+    public float eventTimer = 0f;
 
     bool triggered;
     bool showText;
@@ -28,11 +39,52 @@ public class BadEvent : MonoBehaviour {
                 showText = false;
             }
         }
+
+        if(triggered && timedEvent)
+        {
+            eventTimer -= Time.deltaTime;
+            if (eventTimer < 0)
+            {
+                if(current == State.shrink)
+                {
+                    foreach (Transform t in target.GetComponentsInChildren<Transform>())
+                    {
+                        if (t.name != target.name)
+                        {
+                            t.localScale = new Vector3(t.localScale.x * 2, t.localScale.y, t.localScale.z);
+                        }
+                    }
+                }
+
+                if (current == State.dissapearTime)
+                {
+                    foreach (FadeOut f in target.GetComponentsInChildren<FadeOut>())
+                    {
+                        if (f.name != target.name)
+                        {
+                            f.enabled = true;
+                            f.timeOnPlatform = 1.0f;
+                        }
+                    }
+                }
+
+                if (current == State.jumpHeight)
+                {
+                    player.GetComponent<Rigidbody2D>().mass -= .01f;
+                }
+
+                if (current == State.clingy)
+                {
+                    player.GetComponent<PlatformerCharacter2D>().setCLingy(false);
+                }
+                timedEvent = false;
+            }
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (coll.gameObject.name == "GroundCheck")
         {
             if(!triggered)
                 MomBadEvent();
@@ -43,12 +95,37 @@ public class BadEvent : MonoBehaviour {
     {
         triggered = true;
         showText = true;
-        foreach (Transform t in target.GetComponentsInChildren<Transform>())
+        if(current == State.shrink)
         {
-            if(t.name != target.name)
+            foreach (Transform t in target.GetComponentsInChildren<Transform>())
             {
-                t.localScale = new Vector3(t.localScale.x / 2, t.localScale.y, t.localScale.z);
+                if (t.name != target.name)
+                {
+                    t.localScale = new Vector3(t.localScale.x / 2, t.localScale.y, t.localScale.z);
+                }
             }
+        }
+
+        if (current == State.dissapearTime)
+        {
+            foreach (FadeOut f in target.GetComponentsInChildren<FadeOut>())
+            {
+                if (f.name != target.name)
+                {
+                    f.enabled = true;
+                    f.timeOnPlatform = dissapearTime;
+                }
+            }
+        }
+
+        if (current == State.jumpHeight)
+        {
+            player.GetComponent<Rigidbody2D>().mass += .01f;
+        }
+
+        if (current == State.clingy)
+        {
+            player.GetComponent<PlatformerCharacter2D>().setCLingy(true);
         }
         GetComponentInParent<ParticleSystem>().Stop();
     }
