@@ -1169,11 +1169,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4329466182103610, guid: a6326c554d40e174992f11700c8e9e48, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 19.86
+      value: 23.12
       objectReference: {fileID: 0}
     - target: {fileID: 4329466182103610, guid: a6326c554d40e174992f11700c8e9e48, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.7369738
+      value: -4.56
       objectReference: {fileID: 0}
     - target: {fileID: 4329466182103610, guid: a6326c554d40e174992f11700c8e9e48, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1198,6 +1198,36 @@ Prefab:
     - target: {fileID: 4329466182103610, guid: a6326c554d40e174992f11700c8e9e48, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 251261607222406328, guid: a6326c554d40e174992f11700c8e9e48,
+        type: 2}
+      propertyPath: m_SurfaceArc
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 251261607222406328, guid: a6326c554d40e174992f11700c8e9e48,
+        type: 2}
+      propertyPath: m_UseOneWayGrouping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 251261607222406328, guid: a6326c554d40e174992f11700c8e9e48,
+        type: 2}
+      propertyPath: m_SideArc
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 251261607222406328, guid: a6326c554d40e174992f11700c8e9e48,
+        type: 2}
+      propertyPath: m_UseSideBounce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61587375109398792, guid: a6326c554d40e174992f11700c8e9e48,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.05825701
+      objectReference: {fileID: 0}
+    - target: {fileID: 61587375109398792, guid: a6326c554d40e174992f11700c8e9e48,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.014884151
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6326c554d40e174992f11700c8e9e48, type: 2}
@@ -1720,7 +1750,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371887856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 55.5, z: 0}
+  m_LocalPosition: {x: 4.2, y: -5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1827810547}
@@ -2375,7 +2405,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 9.159192
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2396,7 +2426,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 571630064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1.31, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8808,7 +8838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current: 1
-  target: {fileID: 98936162}
+  target: {fileID: 154456970}
   player: {fileID: 371887856}
   badEventText: You spill your lunch. Your friend is avoiding you.
   dissapearTime: 0.5
@@ -8933,7 +8963,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 332759163
+  randomSeed: 616520138
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12584,9 +12614,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.020244151}
+  m_Offset: {x: 0, y: -0.03177026}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.048565153}
+  m_Size: {x: 1, y: 0.025513012}
 --- !u!4 &1831846106 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4488555340168550, guid: a267a81be63180b4ebcf613231a8dbe2,

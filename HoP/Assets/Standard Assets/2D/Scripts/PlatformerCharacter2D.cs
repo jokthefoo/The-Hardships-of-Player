@@ -26,6 +26,18 @@ namespace UnityStandardAssets._2D
             clingy = b;
         }
 
+        public bool getGrounded()
+        {
+            if(m_Rigidbody2D.velocity.y > -.2f && m_Rigidbody2D.velocity.y < .2f)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void Awake()
         {
             // Setting up references.
@@ -46,7 +58,12 @@ namespace UnityStandardAssets._2D
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
-                    m_Grounded = true;
+                {
+                    if (m_Rigidbody2D.velocity.y > -.2f && m_Rigidbody2D.velocity.y < .2f)
+                    {
+                        m_Grounded = true;
+                    }
+                }
             }
             //m_Anim.SetBool("Ground", m_Grounded);
 

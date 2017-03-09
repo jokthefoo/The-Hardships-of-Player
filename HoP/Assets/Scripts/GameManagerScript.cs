@@ -11,7 +11,7 @@ public class GameManagerScript : MonoBehaviour
 
     void Start()
     {
-
+        Time.timeScale = 1.0f;
     }
 
     void Update()
@@ -54,14 +54,14 @@ public class GameManagerScript : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        if (UI.GetComponent<Canvas>().enabled)
+        if (UI.enabled)
         {
-            UI.GetComponent<Canvas>().enabled = false;
+            UI.enabled = false;
             Time.timeScale = 1.0f;
         }
         else
         {
-            UI.GetComponent<Canvas>().enabled = true;
+            UI.enabled = true;
             Time.timeScale = 0f;
         }
     }

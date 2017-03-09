@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets._2D;
 
 public class FadeOut : MonoBehaviour {
 
@@ -60,7 +61,15 @@ public class FadeOut : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!touched && !unactive && collision.transform.name == "GroundCheck")
+        if(!touched && !unactive && collision.transform.name == "GroundCheck" && collision.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
+        {
+            touched = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!touched && !unactive && collision.transform.name == "GroundCheck" && collision.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
         {
             touched = true;
         }
