@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Level1.unity
   - enabled: 1
     path: Assets/InfiniteLevel.unity
+  - enabled: 1
+    path: Assets/Level 2.unity

@@ -130,7 +130,7 @@ public class GoodEvent : MonoBehaviour {
                     t.text = goodEventText + "\n(A new friend's platforms have appeared!)";
             }
             //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(A new friend's platforms have appeared!)", "Ok");
-            target.transform.position = new Vector3(-38, target.transform.position.y, target.transform.position.z);
+            target.transform.position = new Vector3(target.transform.position.x-38, target.transform.position.y, target.transform.position.z);
         }
 
         if (current == State.dissapearTime)

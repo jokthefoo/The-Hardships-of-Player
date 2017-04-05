@@ -1545,7 +1545,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 323702910}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 1
   m_Camera: {fileID: 571630068}
@@ -1807,7 +1807,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371887856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2, y: -5.9, z: 0}
+  m_LocalPosition: {x: -4.1, y: 88.8, z: 0}
   m_LocalScale: {x: -2, y: 2, z: 2}
   m_Children:
   - {fileID: 1827810547}
@@ -4659,6 +4659,8 @@ GameObject:
   - component: {fileID: 1193562470}
   - component: {fileID: 1193562469}
   - component: {fileID: 1193562468}
+  - component: {fileID: 1193562473}
+  - component: {fileID: 1193562472}
   m_Layer: 9
   m_Name: Quad (1)
   m_TagString: Untagged
@@ -4749,6 +4751,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1193562466}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1193562472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193562466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e233da4fa7b77db479bb3f23dd49eedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1193562473
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193562466}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 2.738282}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.6141324}
 --- !u!1001 &1205523814
 Prefab:
   m_ObjectHideFlags: 0
