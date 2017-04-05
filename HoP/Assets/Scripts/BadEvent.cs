@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityStandardAssets._2D;
 using UnityEngine;
+using UnityEditor;
+using System;
+using UnityEngine.UI;
 
 public class BadEvent : MonoBehaviour {
 
@@ -17,6 +20,7 @@ public class BadEvent : MonoBehaviour {
     public float dissapearTime = 1.0f;
     public bool timedEvent = false;
     public float eventTimer = 0f;
+    public Canvas eventCanvas;
 
     bool triggered;
     bool showText;
@@ -26,6 +30,10 @@ public class BadEvent : MonoBehaviour {
 	void Start () {
         triggered = false;
         showText = false;
+        if (eventCanvas.gameObject.activeSelf)
+        {
+            eventCanvas.gameObject.SetActive(false);
+        }
     }
 	
 	// Update is called once per frame
@@ -85,16 +93,25 @@ public class BadEvent : MonoBehaviour {
     {
         if (coll.gameObject.name == "GroundCheck")
         {
-            if(!triggered)
-                MomBadEvent();
+            if (!triggered)
+            {
+                GenBadEvent();
+                eventCanvas.gameObject.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
     }
 
-    void MomBadEvent()
+    void GenBadEvent()
     {
+        String message = "";
+        if (timedEvent)
+        {
+            message = " For " + eventTimer + " seconds.";
+        }
         triggered = true;
-        showText = true;
-        if(current == State.shrink)
+        //showText = true;
+        if (current == State.shrink)
         {
             foreach (Transform t in target.GetComponentsInChildren<Transform>())
             {
@@ -103,6 +120,12 @@ public class BadEvent : MonoBehaviour {
                     t.localScale = new Vector3(t.localScale.x / 2, t.localScale.y, t.localScale.z);
                 }
             }
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = badEventText + "\n(Their platforms are now smaller.)" + message;
+            }
+            //EditorUtility.DisplayDialog("Bad Event! :(", badEventText + "\n(Their platforms are now smaller.)" + message, "Ok");
         }
 
         if (current == State.dissapearTime)
@@ -115,16 +138,34 @@ public class BadEvent : MonoBehaviour {
                     f.timeOnPlatform = dissapearTime;
                 }
             }
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = badEventText + "\n(Their platforms disappear faster.)" + message;
+            }
+            //EditorUtility.DisplayDialog("Bad Event! :(", badEventText + "\n(Their platforms disappear faster.)" + message, "Ok");
         }
 
         if (current == State.jumpHeight)
         {
             player.GetComponent<Rigidbody2D>().mass += .01f;
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = badEventText + "\n(You can't jump as high.)" + message;
+            }
+            //EditorUtility.DisplayDialog("Bad Event! :(", badEventText + "\n(You can't jump as high.)" + message, "Ok");
         }
 
         if (current == State.clingy)
         {
             player.GetComponent<PlatformerCharacter2D>().setCLingy(true);
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = badEventText + "\n(You can only move while in mid-air.)" + message;
+            }
+            //EditorUtility.DisplayDialog("Bad Event! :(", badEventText + "\n(You can only move while in mid-air.)" + message, "Ok");
         }
         GetComponentInParent<ParticleSystem>().Stop();
     }

@@ -12,6 +12,13 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+        foreach (Text t in UI.GetComponentsInChildren<Text>())
+        {
+            if (t.name == "Title")
+            {
+                t.text = "The Hardships of " + Vars.Name;
+            }
+        }
     }
 
     void Update()
@@ -57,13 +64,24 @@ public class GameManagerScript : MonoBehaviour
         if (UI.enabled)
         {
             UI.enabled = false;
-            Time.timeScale = 1.0f;
+            TimeSet();
         }
         else
         {
             UI.enabled = true;
-            Time.timeScale = 0f;
+            TimeSet();
         }
     }
 
+    public void TimeSet()
+    {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+    }
 }

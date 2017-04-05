@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.UI;
 
 public class GoodEvent : MonoBehaviour {
 
@@ -16,6 +19,7 @@ public class GoodEvent : MonoBehaviour {
     public float dissapearTime = 1.0f;
     public bool timedEvent = false;
     public float eventTimer = 0f;
+    public Canvas eventCanvas;
 
     bool triggered;
     bool showText;
@@ -25,6 +29,10 @@ public class GoodEvent : MonoBehaviour {
 	void Start () {
         triggered = false;
         showText = false;
+        if(eventCanvas.gameObject.activeSelf)
+        {
+            eventCanvas.gameObject.SetActive(false);
+        }
     }
 	
 	// Update is called once per frame
@@ -81,23 +89,22 @@ public class GoodEvent : MonoBehaviour {
         {
             if(!triggered)
             {
-                FriendGoodEvent();
+                GenGoodEvent();
+                eventCanvas.gameObject.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
     }
 
-    void FriendGoodEvent()
-    {
-        triggered = true;
-        showText = true;
-        target.transform.position = new Vector3(-38, target.transform.position.y, target.transform.position.z);
-        GetComponentInParent<ParticleSystem>().Stop();
-    }
-
     void GenGoodEvent()
     {
+        String message = "";
+        if (timedEvent)
+        {
+            message = " For " + eventTimer + " seconds.";
+        }
         triggered = true;
-        showText = true;
+        //showText = true;
         if (current == State.grow)
         {
             foreach (Transform t in target.GetComponentsInChildren<Transform>())
@@ -107,6 +114,23 @@ public class GoodEvent : MonoBehaviour {
                     t.localScale = new Vector3(t.localScale.x * 2, t.localScale.y, t.localScale.z);
                 }
             }
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if(t.name == "MainText")
+                    t.text = goodEventText + "\n(Their platforms have grown!)" + message;
+            }
+            //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(Their platforms have grown!)" + message, "Ok");
+        }
+
+        if(current == State.friendMoveEvent)
+        {
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = goodEventText + "\n(A new friend's platforms have appeared!)";
+            }
+            //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(A new friend's platforms have appeared!)", "Ok");
+            target.transform.position = new Vector3(-38, target.transform.position.y, target.transform.position.z);
         }
 
         if (current == State.dissapearTime)
@@ -119,11 +143,23 @@ public class GoodEvent : MonoBehaviour {
                     f.timeOnPlatform = dissapearTime;
                 }
             }
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = goodEventText + "\n(Their platforms disappear slower!)" + message;
+            }
+            //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(Their platforms disappear slower!)" + message, "Ok");
         }
 
         if (current == State.jumpHeight)
         {
             player.GetComponent<Rigidbody2D>().mass -= .01f;
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = goodEventText + "\n(You can jump higher!)" + message;
+            }
+            //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(You can jump higher!)" + message, "Ok");
         }
         GetComponentInParent<ParticleSystem>().Stop();
     }

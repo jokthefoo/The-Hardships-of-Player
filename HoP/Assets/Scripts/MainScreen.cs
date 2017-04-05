@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainScreen : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class MainScreen : MonoBehaviour {
     public ColorPicker picker;
     string playerName;
     public GameObject player;
+
+    Color chosenColor = Color.green;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +26,7 @@ public class MainScreen : MonoBehaviour {
 
         picker.onValueChanged.AddListener(color =>
         {
+            chosenColor = color;
             player.GetComponent<SpriteColor>().ChangeSprite(color);
         });
     }
@@ -50,8 +54,17 @@ public class MainScreen : MonoBehaviour {
         }
     }
 
+    public void ColorPicked()
+    {
+        GetComponent<SpriteSheetColor>().ChangeSpriteSheet(chosenColor);
+        StartCoroutine(Wait());
+        UnityEditor.AssetDatabase.Refresh();
+        SceneManager.LoadScene("Level1");
+    }
+
     void loadTitleColorSelect()
     {
+        Vars.Name = playerName;
         nameCanvas.gameObject.SetActive(false);
         foreach( Text t in colorCanvas.GetComponentsInChildren<Text>())
         {
@@ -61,5 +74,10 @@ public class MainScreen : MonoBehaviour {
             }
         }
         colorCanvas.gameObject.SetActive(true);
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
     }
 }
