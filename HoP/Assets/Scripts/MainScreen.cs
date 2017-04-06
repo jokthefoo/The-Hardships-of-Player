@@ -58,8 +58,16 @@ public class MainScreen : MonoBehaviour {
     {
         GetComponent<SpriteSheetColor>().ChangeSpriteSheet(chosenColor);
         StartCoroutine(Wait());
-        UnityEditor.AssetDatabase.Refresh();
+        //UnityEditor.AssetDatabase.Refresh();
         SceneManager.LoadScene("Level1");
+    }
+
+    public void ColorPickedInf()
+    {
+        GetComponent<SpriteSheetColor>().ChangeSpriteSheet(chosenColor);
+        StartCoroutine(Wait());
+        //UnityEditor.AssetDatabase.Refresh();
+        SceneManager.LoadScene("InfiniteLevel");
     }
 
     void loadTitleColorSelect()

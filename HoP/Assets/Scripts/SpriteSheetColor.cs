@@ -54,7 +54,7 @@ public class SpriteSheetColor : MonoBehaviour {
             tempText.Apply();
 
             byte[] bytes = tempText.EncodeToPNG();
-            File.WriteAllBytes(Application.dataPath + "/../Assets/Sprite Sheet.png", bytes);
+           // File.WriteAllBytes(Application.dataPath + "/../Assets/Sprite Sheet.png", bytes);
         
 
             SpriteRenderer sr = player.GetComponent<SpriteRenderer>();

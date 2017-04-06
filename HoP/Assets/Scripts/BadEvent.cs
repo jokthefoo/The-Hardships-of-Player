@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityStandardAssets._2D;
 using UnityEngine;
-using UnityEditor;
 using System;
 using UnityEngine.UI;
 

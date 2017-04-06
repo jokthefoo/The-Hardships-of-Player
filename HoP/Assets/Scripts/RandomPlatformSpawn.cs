@@ -26,9 +26,9 @@ public class RandomPlatformSpawn : MonoBehaviour {
             for (int i = 0; i < _numberOfPlatforms; i++)
             {
                 float distanceBetweenY = Random.Range(_minDistanceBetween, _maxDistanceBetween);
-                Debug.Log(distanceBetweenY.ToString());
+                //Debug.Log(distanceBetweenY.ToString());
                 float randomXPos = Random.Range(-_xDeviation,_xDeviation);
-                Debug.Log(randomXPos.ToString());
+                //Debug.Log(randomXPos.ToString());
                 //Debug.Log((_platformHeight).ToString());
                 transform.position = new Vector3(_startingXPos + randomXPos, transform.position.y + _platformHeight + distanceBetweenY, transform.position.z);
                 Instantiate(_platform, transform.position, transform.rotation);
