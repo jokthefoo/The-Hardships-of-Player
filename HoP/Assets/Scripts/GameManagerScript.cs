@@ -37,7 +37,7 @@ public class GameManagerScript : MonoBehaviour
     public void ResetGame()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        SceneManager.LoadScene("StartScreen");
     }
 
     public void EnteredName()

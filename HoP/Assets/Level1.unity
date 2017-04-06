@@ -1807,7 +1807,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371887856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 88.8, z: 0}
+  m_LocalPosition: {x: 0.4, y: -6.25, z: 0}
   m_LocalScale: {x: -2, y: 2, z: 2}
   m_Children:
   - {fileID: 1827810547}
@@ -4024,7 +4024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 680, y: -489}
+  m_AnchoredPosition: {x: 680, y: -436}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1008063568
@@ -6147,7 +6147,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1593714897}
   serializedVersion: 5
   lengthInSec: 10
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
@@ -9040,7 +9040,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1596459226}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
@@ -13067,7 +13067,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1895803337}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
