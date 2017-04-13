@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 2189355}
   - component: {fileID: 2189354}
   - component: {fileID: 2189353}
+  - component: {fileID: 2189360}
   m_Layer: 8
   m_Name: Player 2
   m_TagString: Player
@@ -242,6 +243,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2189360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2189352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2550fbcb8f2d96c43b6a2083f8c57cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &10383132
 Prefab:
   m_ObjectHideFlags: 0
@@ -962,6 +974,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.0024154186
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.5539799
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.15978257
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.99330544
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f53665886c6d34f00b150f0aabd84fe3, type: 2}
   m_IsPrefabParent: 0
@@ -2288,7 +2320,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475613107}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 1
   m_Camera: {fileID: 1712228397}
@@ -2505,6 +2537,26 @@ Prefab:
         type: 2}
       propertyPath: eventTimer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.002415657
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.50467175
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.22552113
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.0130267
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f475b49f00e174f2e94d47fb02be2c86, type: 2}
@@ -4880,6 +4932,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.01675129
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.6655899
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.9944155
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.30290443
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f53665886c6d34f00b150f0aabd84fe3, type: 2}
   m_IsPrefabParent: 0
@@ -5337,6 +5409,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.004880488
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.5211003
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.15977447
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.0080967
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f53665886c6d34f00b150f0aabd84fe3, type: 2}
   m_IsPrefabParent: 0
@@ -5842,6 +5934,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.004980445
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.57041323
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.19265552
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.0179576
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f475b49f00e174f2e94d47fb02be2c86, type: 2}
   m_IsPrefabParent: 0
@@ -6625,6 +6737,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.0099105835
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.5621942
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.1433453
+      objectReference: {fileID: 0}
+    - target: {fileID: 61875798432992260, guid: f53665886c6d34f00b150f0aabd84fe3,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.008096
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f53665886c6d34f00b150f0aabd84fe3, type: 2}
   m_IsPrefabParent: 0
@@ -6781,6 +6913,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.01484108
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.5704117
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.22552064
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.99823594
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f475b49f00e174f2e94d47fb02be2c86, type: 2}
   m_IsPrefabParent: 0
@@ -8712,6 +8864,26 @@ Prefab:
       propertyPath: eventCanvas
       value: 
       objectReference: {fileID: 680114591}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.009910107
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.50467813
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.25839067
+      objectReference: {fileID: 0}
+    - target: {fileID: 61597996929550914, guid: f475b49f00e174f2e94d47fb02be2c86,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.008096
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f475b49f00e174f2e94d47fb02be2c86, type: 2}
   m_IsPrefabParent: 0

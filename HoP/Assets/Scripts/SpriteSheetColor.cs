@@ -2,28 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-public class SpriteSheetColor : MonoBehaviour {
+public class SpriteSheetColor : MonoBehaviour
+{
 
-    public Sprite spriteSheet;
+    public Sprite[] spriteSheet;
     public GameObject player;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
     }
 
     public void ChangeSpriteSheet(Color color)
     {
-            Texture2D tempText = new Texture2D(spriteSheet.texture.width, spriteSheet.texture.height);
+        for(int i = 0; i < spriteSheet.Length; i++)
+        {
+            Texture2D tempText = new Texture2D(spriteSheet[i].texture.width, spriteSheet[i].texture.height);
             //Color color = Color.green;
             Color c;
 
-            for (int y = 0; y < tempText.height; y++)
+            for (int x = 0; x < tempText.width; x++)
             {
-                for (int x = 0; x < tempText.width; x++)
+                for (int y = 0; y < tempText.height; y++)
                 {
-                    c = spriteSheet.texture.GetPixel(x, y);
-
+                    c = spriteSheet[i].texture.GetPixel(x, y);
+                    
                     //if (c == baseColor)
                     if (c.r < 0.1 && c.g < 0.1 && c.b < 0.1 && c.a > 0)
                     {
@@ -52,22 +59,35 @@ public class SpriteSheetColor : MonoBehaviour {
                 }
             }
             tempText.Apply();
-
+            /*
             byte[] bytes = tempText.EncodeToPNG();
-           // File.WriteAllBytes(Application.dataPath + "/../Assets/Sprite Sheet.png", bytes);
-        
+            string path = "HoP_Data/Resources/Sprite Sheet.png";
+#if UNITY_EDITOR
+            Debug.Log("editor");
+            path = "Assets/Resources/Sprite Sheet.png";
+#endif
 
-            SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
-            Rect tempRect = new Rect(0, 0, spriteSheet.rect.width, spriteSheet.rect.height);
-            //sr.sprite.textureRect
-            spriteSheet = Sprite.Create(tempText, tempRect, new Vector2(0, 0));
-            spriteSheet.name = "Sprite Sheet_2";
-            sr.material.mainTexture = tempText;
-        
+            //Resources.Load("Sprite Sheet") = tempText;
+            File.WriteAllBytes(path, bytes);
+            */
+
+            Rect tempRect = new Rect(0, 0, spriteSheet[i].rect.width, spriteSheet[i].rect.height);
+            spriteSheet[i] = Sprite.Create(tempText, tempRect, new Vector2(.5f, .5f));
+            spriteSheet[i].name = "Sprite Sheet_"+i;
+            Vars.sprites.Add(spriteSheet[i]);
+            Vars.text = tempText;
+            //SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+            //sr.material.mainTexture = tempText;
+
+#if UNITY_EDITOR
+            //UnityEditor.AssetDatabase.Refresh();
+#endif
+        }
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 }

@@ -23,12 +23,14 @@ public class BadEvent : MonoBehaviour {
 
     bool triggered;
     bool showText;
-    float textTimer = 3.0f;
+    bool showCanvas;
+    float textTimer = 4.0f;
 
 	// Use this for initialization
 	void Start () {
         triggered = false;
         showText = false;
+        showCanvas = false;
         if (eventCanvas.gameObject.activeSelf)
         {
             eventCanvas.gameObject.SetActive(false);
@@ -46,7 +48,17 @@ public class BadEvent : MonoBehaviour {
             }
         }
 
-        if(triggered && timedEvent)
+        if (triggered && showCanvas)
+        {
+            textTimer -= Time.deltaTime;
+            if (textTimer < 0)
+            {
+                showCanvas = false;
+                eventCanvas.gameObject.SetActive(false);
+            }
+        }
+
+        if (triggered && timedEvent)
         {
             eventTimer -= Time.deltaTime;
             if (eventTimer < 0)
@@ -96,7 +108,8 @@ public class BadEvent : MonoBehaviour {
             {
                 GenBadEvent();
                 eventCanvas.gameObject.SetActive(true);
-                Time.timeScale = 0f;
+                showCanvas = true;
+                //Time.timeScale = 0f;
             }
         }
     }

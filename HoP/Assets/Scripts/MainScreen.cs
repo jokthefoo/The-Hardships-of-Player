@@ -8,6 +8,7 @@ public class MainScreen : MonoBehaviour {
 
     public InputField input;
     public Canvas nameCanvas;
+    public Canvas mainCanvas;
     public Canvas colorCanvas;
     public ColorPicker picker;
     string playerName;
@@ -20,6 +21,7 @@ public class MainScreen : MonoBehaviour {
         picker.CurrentColor = Color.green;
         nameCanvas.gameObject.SetActive(true);
         colorCanvas.gameObject.SetActive(false);
+        mainCanvas.gameObject.SetActive(false);
         input.ActivateInputField();
         playerName = "";
         picker.CurrentColor = Color.green;
@@ -57,17 +59,26 @@ public class MainScreen : MonoBehaviour {
     public void ColorPicked()
     {
         GetComponent<SpriteSheetColor>().ChangeSpriteSheet(chosenColor);
-        StartCoroutine(Wait());
-        //UnityEditor.AssetDatabase.Refresh();
-        SceneManager.LoadScene("Level1");
+
+        colorCanvas.gameObject.SetActive(false);
+        foreach (Text t in mainCanvas.GetComponentsInChildren<Text>())
+        {
+            if (t.gameObject.name == "titleText")
+            {
+                t.text = t.text + playerName;
+            }
+        }
+        mainCanvas.gameObject.SetActive(true);
     }
 
-    public void ColorPickedInf()
+    public void InfLevel()
     {
-        GetComponent<SpriteSheetColor>().ChangeSpriteSheet(chosenColor);
-        StartCoroutine(Wait());
-        //UnityEditor.AssetDatabase.Refresh();
         SceneManager.LoadScene("InfiniteLevel");
+    }
+
+    public void StoryLevel()
+    {
+        SceneManager.LoadScene("Level1");
     }
 
     void loadTitleColorSelect()
