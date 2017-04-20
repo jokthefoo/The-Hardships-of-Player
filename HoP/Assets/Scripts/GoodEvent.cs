@@ -115,6 +115,7 @@ public class GoodEvent : MonoBehaviour
                 eventCanvas.gameObject.SetActive(true);
                 showCanvas = true;
                 //Time.timeScale = 0f;
+                Vars.goodJumps++;
             }
         }
     }
@@ -129,6 +130,7 @@ public class GoodEvent : MonoBehaviour
                 eventCanvas.gameObject.SetActive(true);
                 showCanvas = true;
                 //Time.timeScale = 0f;
+                Vars.goodJumps++;
             }
         }
     }

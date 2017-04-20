@@ -64,6 +64,30 @@ public class FadeOut : MonoBehaviour {
         if(!touched && !unactive && collision.transform.name == "GroundCheck" && collision.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
         {
             touched = true;
+            if (gameObject.name.Contains("dad"))
+            {
+                Vars.dadJumps++;
+            }
+            else if (gameObject.name.Contains("mom"))
+            {
+                Vars.momJumps++;
+            }
+            else if (gameObject.name.Contains("brother"))
+            {
+                Vars.brotherJumps++;
+            }
+            else if (gameObject.name.Contains("friendBlock"))
+            {
+                Vars.friend1Jumps++;
+            }
+            else if (gameObject.name.Contains("friend2"))
+            {
+                Vars.friend2Jumps++;
+            }
+            else if (gameObject.name.Contains("bad"))
+            {
+                Vars.badJumps++;
+            }
         }
     }
 
@@ -72,6 +96,30 @@ public class FadeOut : MonoBehaviour {
         if (!touched && !unactive && collision.transform.name == "GroundCheck" && collision.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
         {
             touched = true;
+            if (gameObject.name.Contains("dad"))
+            {
+                Vars.dadJumps++;
+            }
+            else if (gameObject.name.Contains("mom"))
+            {
+                Vars.momJumps++;
+            }
+            else if (gameObject.name.Contains("brother"))
+            {
+                Vars.brotherJumps++;
+            }
+            else if (gameObject.name.Contains("friendBlock"))
+            {
+                Vars.friend1Jumps++;
+            }
+            else if (gameObject.name.Contains("friend2"))
+            {
+                Vars.friend2Jumps++;
+            }
+            else if (gameObject.name.Contains("bad"))
+            {
+                Vars.badJumps++;
+            }
         }
     }
 } 

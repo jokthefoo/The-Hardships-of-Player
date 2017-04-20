@@ -13,6 +13,7 @@ public class MainScreen : MonoBehaviour {
     public ColorPicker picker;
     string playerName;
     public GameObject player;
+    public GameObject platform;
 
     Color chosenColor = Color.green;
 
@@ -30,6 +31,7 @@ public class MainScreen : MonoBehaviour {
         {
             chosenColor = color;
             player.GetComponent<SpriteColor>().ChangeSprite(color);
+            platform.GetComponent<colorscript2>().ChangeSprite(color);
         });
     }
 	
