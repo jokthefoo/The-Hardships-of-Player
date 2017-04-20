@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114628901921503380}
   - component: {fileID: 50821207089119382}
   - component: {fileID: 251128729532165146}
+  - component: {fileID: 114826364416944490}
   m_Layer: 9
   m_Name: badEvent
   m_TagString: Untagged
@@ -153,6 +154,20 @@ MonoBehaviour:
   timedEvent: 0
   eventTimer: 0
   eventCanvas: {fileID: 0}
+--- !u!114 &114826364416944490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1342497137214478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c951a31c816d414e835d32929037c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparency: 0.3
+  timeDisabled: 1
+  timeOnPlatform: 1
 --- !u!198 &198484724829461106
 ParticleSystem:
   m_ObjectHideFlags: 1
