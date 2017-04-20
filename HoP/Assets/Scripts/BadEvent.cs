@@ -5,11 +5,12 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class BadEvent : MonoBehaviour {
+public class BadEvent : MonoBehaviour
+{
 
     public enum State
     {
-        shrink, dissapearTime, jumpHeight,clingy
+        shrink, dissapearTime, jumpHeight, clingy
     }
 
     public State current;
@@ -20,14 +21,16 @@ public class BadEvent : MonoBehaviour {
     public bool timedEvent = false;
     public float eventTimer = 0f;
     public Canvas eventCanvas;
+    public Canvas timerCanvas;
 
     bool triggered;
     bool showText;
     bool showCanvas;
     float textTimer = 4.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         triggered = false;
         showText = false;
         showCanvas = false;
@@ -36,13 +39,14 @@ public class BadEvent : MonoBehaviour {
             eventCanvas.gameObject.SetActive(false);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if(triggered && showText)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (triggered && showText)
         {
             textTimer -= Time.deltaTime;
-            if(textTimer < 0)
+            if (textTimer < 0)
             {
                 showText = false;
             }
@@ -61,9 +65,14 @@ public class BadEvent : MonoBehaviour {
         if (triggered && timedEvent)
         {
             eventTimer -= Time.deltaTime;
+            foreach (Text t in timerCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "TimerText")
+                    t.text = "" + eventTimer.ToString("F1");
+            }
             if (eventTimer < 0)
             {
-                if(current == State.shrink)
+                if (current == State.shrink)
                 {
                     foreach (Transform t in target.GetComponentsInChildren<Transform>())
                     {
@@ -96,13 +105,29 @@ public class BadEvent : MonoBehaviour {
                     player.GetComponent<PlatformerCharacter2D>().setCLingy(false);
                 }
                 timedEvent = false;
+
+                timerCanvas.gameObject.SetActive(false);
             }
         }
-	}
+    }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.name == "GroundCheck")
+        if (coll.transform.name == "GroundCheck" && coll.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
+        {
+            if (!triggered)
+            {
+                GenBadEvent();
+                eventCanvas.gameObject.SetActive(true);
+                showCanvas = true;
+                //Time.timeScale = 0f;
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.transform.name == "GroundCheck" && coll.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
         {
             if (!triggered)
             {
@@ -119,6 +144,12 @@ public class BadEvent : MonoBehaviour {
         String message = "";
         if (timedEvent)
         {
+            timerCanvas.gameObject.SetActive(true);
+            foreach (Text t in timerCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "TimerText")
+                    t.text = "" + eventTimer.ToString("F1");
+            }
             message = " For " + eventTimer + " seconds.";
         }
         triggered = true;
@@ -190,7 +221,7 @@ public class BadEvent : MonoBehaviour {
             style.fontSize = 35;
             style.alignment = TextAnchor.MiddleCenter;
             style.wordWrap = true;
-            DrawOutline(new Rect(Screen.width/2-150, Screen.height/2-25, 450, 50), badEventText, style, Color.black, Color.red, 3);
+            DrawOutline(new Rect(Screen.width / 2 - 150, Screen.height / 2 - 25, 450, 50), badEventText, style, Color.black, Color.red, 3);
         }
     }
 
@@ -199,9 +230,9 @@ public class BadEvent : MonoBehaviour {
     {
         style.normal.textColor = outColor;
 
-        for(int z = 1; z <= outlineSize+1; z++)
+        for (int z = 1; z <= outlineSize + 1; z++)
         {
-            GUI.Label(new Rect(position.x - z,position.y,position.width,position.height), text, style);
+            GUI.Label(new Rect(position.x - z, position.y, position.width, position.height), text, style);
             GUI.Label(new Rect(position.x + z, position.y, position.width, position.height), text, style);
             GUI.Label(new Rect(position.x, position.y - z, position.width, position.height), text, style);
             GUI.Label(new Rect(position.x, position.y + z, position.width, position.height), text, style);

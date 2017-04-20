@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets._2D;
 
-public class GoodEvent : MonoBehaviour {
+public class GoodEvent : MonoBehaviour
+{
 
     public enum State
     {
-        friendMoveEvent,grow, dissapearTime, jumpHeight
+        friendMoveEvent, grow, dissapearTime, jumpHeight
     }
-    
+
     public State current;
     public GameObject target;
     public GameObject player;
@@ -19,14 +21,16 @@ public class GoodEvent : MonoBehaviour {
     public bool timedEvent = false;
     public float eventTimer = 0f;
     public Canvas eventCanvas;
+    public Canvas timerCanvas;
 
     bool triggered;
     bool showText;
     bool showCanvas;
     float textTimer = 4.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         triggered = false;
         showText = false;
         showCanvas = false;
@@ -35,9 +39,10 @@ public class GoodEvent : MonoBehaviour {
             eventCanvas.gameObject.SetActive(false);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (triggered && showText)
         {
             textTimer -= Time.deltaTime;
@@ -60,6 +65,11 @@ public class GoodEvent : MonoBehaviour {
         if (triggered && timedEvent)
         {
             eventTimer -= Time.deltaTime;
+            foreach (Text t in timerCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "TimerText")
+                    t.text = "" + eventTimer.ToString("F1");
+            }
             if (eventTimer < 0)
             {
                 if (current == State.grow)
@@ -90,15 +100,30 @@ public class GoodEvent : MonoBehaviour {
                     player.GetComponent<Rigidbody2D>().mass += .01f;
                 }
                 timedEvent = false;
+                timerCanvas.gameObject.SetActive(false);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (coll.transform.name == "GroundCheck" && coll.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
         {
-            if(!triggered)
+            if (!triggered)
+            {
+                GenGoodEvent();
+                eventCanvas.gameObject.SetActive(true);
+                showCanvas = true;
+                //Time.timeScale = 0f;
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.transform.name == "GroundCheck" && coll.gameObject.GetComponentInParent<PlatformerCharacter2D>().getGrounded())
+        {
+            if (!triggered)
             {
                 GenGoodEvent();
                 eventCanvas.gameObject.SetActive(true);
@@ -113,6 +138,12 @@ public class GoodEvent : MonoBehaviour {
         String message = "";
         if (timedEvent)
         {
+            timerCanvas.gameObject.SetActive(true);
+            foreach (Text t in timerCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "TimerText")
+                    t.text = "" + eventTimer.ToString("F1");
+            }
             message = " For " + eventTimer + " seconds.";
         }
         triggered = true;
@@ -128,13 +159,13 @@ public class GoodEvent : MonoBehaviour {
             }
             foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
             {
-                if(t.name == "MainText")
+                if (t.name == "MainText")
                     t.text = goodEventText + "\n(Their platforms have grown!)" + message;
             }
             //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(Their platforms have grown!)" + message, "Ok");
         }
 
-        if(current == State.friendMoveEvent)
+        if (current == State.friendMoveEvent)
         {
             foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
             {
@@ -142,7 +173,7 @@ public class GoodEvent : MonoBehaviour {
                     t.text = goodEventText + "\n(A new friend's platforms have appeared!)";
             }
             //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(A new friend's platforms have appeared!)", "Ok");
-            target.transform.position = new Vector3(target.transform.position.x-38, target.transform.position.y, target.transform.position.z);
+            target.transform.position = new Vector3(target.transform.position.x - 38, target.transform.position.y, target.transform.position.z);
         }
 
         if (current == State.dissapearTime)
@@ -184,7 +215,7 @@ public class GoodEvent : MonoBehaviour {
             style.fontSize = 35;
             style.alignment = TextAnchor.MiddleCenter;
             style.wordWrap = true;
-            DrawOutline(new Rect(Screen.width/2-150, Screen.height/2-25, 450, 50), goodEventText, style, Color.black, Color.cyan, 3);
+            DrawOutline(new Rect(Screen.width / 2 - 150, Screen.height / 2 - 25, 450, 50), goodEventText, style, Color.black, Color.cyan, 3);
         }
     }
 
@@ -193,9 +224,9 @@ public class GoodEvent : MonoBehaviour {
     {
         style.normal.textColor = outColor;
 
-        for(int z = 1; z <= outlineSize+1; z++)
+        for (int z = 1; z <= outlineSize + 1; z++)
         {
-            GUI.Label(new Rect(position.x - z,position.y,position.width,position.height), text, style);
+            GUI.Label(new Rect(position.x - z, position.y, position.width, position.height), text, style);
             GUI.Label(new Rect(position.x + z, position.y, position.width, position.height), text, style);
             GUI.Label(new Rect(position.x, position.y - z, position.width, position.height), text, style);
             GUI.Label(new Rect(position.x, position.y + z, position.width, position.height), text, style);
