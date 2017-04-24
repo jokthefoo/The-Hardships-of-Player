@@ -37,6 +37,16 @@ public class GameManagerScript : MonoBehaviour
     public void ResetGame()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
+        Vars.sprites = new List<Sprite>();
+        Vars.fsprites = new List<Sprite>();
+        Vars.numJumps = 0;
+        Vars.momJumps = 0;
+        Vars.dadJumps = 0;
+        Vars.badJumps = 0;
+        Vars.goodJumps = 0;
+        Vars.friend1Jumps = 0;
+        Vars.friend2Jumps = 0;
+        Vars.brotherJumps = 0;
         SceneManager.LoadScene("StartScreen");
     }
 

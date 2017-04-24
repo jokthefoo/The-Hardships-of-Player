@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263418283220028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,9 +51,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a9a9d5dc284fe4d9e74b85675fa78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platform: {fileID: 1064855727828374, guid: c7145fadba209514abd769a3899ff4cb, type: 2}
+  _platforms:
+  - {fileID: 1596185023249296, guid: 4baa7a8dfb8594b9e82a00933a053b34, type: 2}
+  - {fileID: 1302949952539026, guid: a267a81be63180b4ebcf613231a8dbe2, type: 2}
+  - {fileID: 1128785611994070, guid: 5974914d9e46741f6a1bd6a56a1df8be, type: 2}
+  - {fileID: 1803831993057340, guid: cbd32d8861a483748a060b90cf79e3fe, type: 2}
+  - {fileID: 1566585181596162, guid: a6326c554d40e174992f11700c8e9e48, type: 2}
+  - {fileID: 1203680097926544, guid: f475b49f00e174f2e94d47fb02be2c86, type: 2}
+  - {fileID: 1342497137214478, guid: f53665886c6d34f00b150f0aabd84fe3, type: 2}
+  parents:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
+  eventCanvas: {fileID: 0}
+  timerCanvas: {fileID: 0}
   _numberOfPlatforms: 3
   _genPoint: {fileID: 0}
-  _minDistanceBetween: 1
-  _maxDistanceBetween: 2
-  _xDeviation: 10
+  _minDistanceBetween: 3
+  _maxDistanceBetween: 4
+  _xDeviation: 2

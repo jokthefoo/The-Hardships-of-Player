@@ -148,11 +148,12 @@ MonoBehaviour:
   current: 0
   target: {fileID: 0}
   player: {fileID: 0}
-  goodEventText: You made a new friend!
+  goodEventText: Good Event.
   dissapearTime: 1
   timedEvent: 0
   eventTimer: 0
   eventCanvas: {fileID: 0}
+  timerCanvas: {fileID: 0}
 --- !u!198 &198910727127815068
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -149,11 +149,12 @@ MonoBehaviour:
   current: 0
   target: {fileID: 0}
   player: {fileID: 0}
-  badEventText: Dad becomes busy with new job.
+  badEventText: Bad Event.
   dissapearTime: 0.5
   timedEvent: 0
   eventTimer: 0
   eventCanvas: {fileID: 0}
+  timerCanvas: {fileID: 0}
 --- !u!114 &114826364416944490
 MonoBehaviour:
   m_ObjectHideFlags: 1

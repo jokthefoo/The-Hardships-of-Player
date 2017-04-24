@@ -10,7 +10,7 @@ public class GoodEvent : MonoBehaviour
 
     public enum State
     {
-        friendMoveEvent, grow, dissapearTime, jumpHeight
+        friendMoveEvent, grow, dissapearTime, jumpHeight, other
     }
 
     public State current;
@@ -167,12 +167,21 @@ public class GoodEvent : MonoBehaviour
             //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(Their platforms have grown!)" + message, "Ok");
         }
 
+        if (current == State.other)
+        {
+            foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
+            {
+                if (t.name == "MainText")
+                    t.text = goodEventText;
+            }
+        }
+
         if (current == State.friendMoveEvent)
         {
             foreach (Text t in eventCanvas.GetComponentsInChildren<Text>())
             {
                 if (t.name == "MainText")
-                    t.text = goodEventText + "\n(A new friend's platforms have appeared!)";
+                    t.text = goodEventText + "\n(Platforms have appeared!)";
             }
             //EditorUtility.DisplayDialog("Good Event! :)", goodEventText + "\n(A new friend's platforms have appeared!)", "Ok");
             target.transform.position = new Vector3(target.transform.position.x - 38, target.transform.position.y, target.transform.position.z);

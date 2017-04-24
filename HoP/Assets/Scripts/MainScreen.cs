@@ -14,6 +14,7 @@ public class MainScreen : MonoBehaviour {
     string playerName;
     public GameObject player;
     public GameObject platform;
+    public GameObject audio;
 
     Color chosenColor = Color.green;
 
@@ -32,6 +33,7 @@ public class MainScreen : MonoBehaviour {
             chosenColor = color;
             player.GetComponent<SpriteColor>().ChangeSprite(color);
             platform.GetComponent<colorscript2>().ChangeSprite(color);
+            Vars.playerColor = color;
         });
     }
 	
@@ -61,6 +63,7 @@ public class MainScreen : MonoBehaviour {
     public void ColorPicked()
     {
         GetComponent<SpriteSheetColor>().ChangeSpriteSheet(chosenColor);
+        GetComponent<SpriteSheetColor>().ChangeHatSpriteSheet(InvertColor(chosenColor));
 
         colorCanvas.gameObject.SetActive(false);
         foreach (Text t in mainCanvas.GetComponentsInChildren<Text>())
@@ -70,17 +73,22 @@ public class MainScreen : MonoBehaviour {
                 t.text = t.text + playerName;
             }
         }
+        audio.gameObject.SetActive(true);
         mainCanvas.gameObject.SetActive(true);
     }
+    public Color InvertColor(Color color)
+    {
+        return new Color(1.0f-color.r, 1.0f-color.g, 1.0f-color.b);
+    }
 
-    public void InfLevel()
+public void InfLevel()
     {
         SceneManager.LoadScene("InfiniteLevel");
     }
 
     public void StoryLevel()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level 1 Cinematic");
     }
 
     void loadTitleColorSelect()

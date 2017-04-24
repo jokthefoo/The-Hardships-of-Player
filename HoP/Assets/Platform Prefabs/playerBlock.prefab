@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 251135313678510608}
   - component: {fileID: 50227239801916518}
   - component: {fileID: 212285668002386284}
+  - component: {fileID: 114731552618958428}
   m_Layer: 9
   m_Name: playerBlock
   m_TagString: Untagged
@@ -76,9 +77,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 1
-  m_Offset: {x: -0.004551697, y: -0.0006828308}
+  m_Offset: {x: 0.00053138734, y: 0.0010958671}
   serializedVersion: 2
-  m_Size: {x: 0.3151837, y: 0.12276637}
+  m_Size: {x: 0.34161425, y: 0.12632535}
 --- !u!61 &61440562129384540
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -90,9 +91,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.0025924684, y: 0.06334229}
+  m_Offset: {x: 0.00020256043, y: 0.06639128}
   serializedVersion: 2
-  m_Size: {x: 0.3090477, y: 0.016219854}
+  m_Size: {x: 0.33496997, y: 0.01418559}
 --- !u!114 &114043763985802466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +108,18 @@ MonoBehaviour:
   transparency: 0.3
   timeDisabled: 2
   timeOnPlatform: 1
+--- !u!114 &114731552618958428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109474846277056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9827428655ce14ba4c2a878d078343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSprite: {fileID: 21300000, guid: 3c9b8ef69114634448e0ac7d44864b24, type: 3}
 --- !u!212 &212285668002386284
 SpriteRenderer:
   m_ObjectHideFlags: 1

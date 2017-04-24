@@ -17,7 +17,7 @@ public class colorscript2 : MonoBehaviour
         Sprite temp = BaseSprite;
         Texture2D tempText = new Texture2D(temp.texture.width, temp.texture.height);
         //print("Width: " + temp.texture.width + " Height: " + temp.texture.height + " rect: " + GetComponent<SpriteRenderer>().sprite.textureRect);
-        Color color = Color.green;
+        Color color = Vars.playerColor;
         Color c;
 
         for (int y = 0; y < tempText.height; y++)
@@ -52,7 +52,7 @@ public class colorscript2 : MonoBehaviour
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         Rect tempRect = new Rect(0, 0, 36, 15);
         //sr.sprite.textureRect
-        sr.sprite = Sprite.Create(tempText, tempRect, new Vector2(0, 0));
+        sr.sprite = Sprite.Create(tempText, tempRect, new Vector2(0.5f, 0.5f));
         sr.sprite.name = "tempname";
         sr.material.mainTexture = tempText;
     }
